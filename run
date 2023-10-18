@@ -12,9 +12,9 @@ docker run --rm \
     -v "$(pwd)":/opt \
     -w /opt \
     laravelsail/php82-composer:latest \
-    bash -c "laravel new example-app && cd example-app && php ./artisan sail:install --with=mysql,redis,mailpit "
+    bash -c "laravel new platform && cd platform && php ./artisan sail:install --with=mysql,redis,mailpit "
 
-cd example-app
+cd platform
 
 # Allow build with no additional services..
 if [ "mysql redis mailpit" == "none" ]; then
@@ -33,11 +33,11 @@ echo ""
 
 if sudo -n true 2>/dev/null; then
     sudo chown -R $USER: .
-    echo -e "${BOLD}Get started with:${NC} cd example-app && ./vendor/bin/sail up"
+    echo -e "${BOLD}Get started with:${NC} cd platform && ./vendor/bin/sail up"
 else
     echo -e "${BOLD}Please provide your password so we can make some final adjustments to your application's permissions.${NC}"
     echo ""
     sudo chown -R $USER: .
     echo ""
-    echo -e "${BOLD}Thank you! We hope you build something incredible. Dive in with:${NC} cd example-app && ./vendor/bin/sail up"
+    echo -e "${BOLD}Thank you! We hope you build something incredible. Dive in with:${NC} cd platform && ./vendor/bin/sail up"
 fi
